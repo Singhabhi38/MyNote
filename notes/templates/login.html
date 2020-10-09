@@ -1,0 +1,42 @@
+{%extends 'navigation.html'%}
+{% load static %}
+{% block body %}
+{% ifequal error "no" %}
+<script>
+    alert('Logged in succesfully');
+  window.location = ("{% url 'profile' %}")
+   
+</script>
+{% endifequal %}
+{% ifequal error "yes"%}
+<script>
+    alert('Invalid Login,Try Again');
+   
+</script>
+{% endifequal %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-6">
+            
+            <h2 class="text-center">New customer</h2>
+         <hr>
+         <p>By Creating an account uhh can able to move through notes uploading and downloading proccess </p>
+         <center><a href="{% url 'signup' %}" class="btn btn-danger text-white mt-5">CREATE AN ACCOUNT</a></center>
+        </div>
+        <div class="col-sm-6">
+            <h2 class="text-center">USER LOGIN</h2>
+         <hr>
+         <form method="post">
+             {%csrf_token%}
+             <label>Email <Address></Address></label>
+             <input type="email" class="form-control" placeholder="Enter email ID" name="emailid"/>
+             <label>password</label>
+             <input type="password" class="form-control" placeholder="Enter password" name="pwd">
+              <input type="submit" class="btn btn-danger mt-2" value="login"/>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
